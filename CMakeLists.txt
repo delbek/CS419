@@ -28,20 +28,28 @@ include_directories(Core/Image)
 include_directories(Core/FileFormats)
 include_directories(SampleImages)
 include_directories(GeneratedHTMLs)
+include_directories(Homeworks)
+include_directories(GPU)
 
 add_executable(CS419
         Core/Image/Image.cpp
         Core/Image/Image.h
+        Core/Matrix.cpp
+        Core/Matrix.h
+        Core/Vector.cpp
+        Core/Vector.h
         Visualization/Visualizer.cpp
         Visualization/Visualizer.h
-        Core/Image/ImageKernel.cu
-        Core/Image/ImageKernel.cuh
         Core/Image/ImageLoader.cpp
         Core/Image/ImageLoader.h
+        GPU/DeviceKernels.cu
+        GPU/DeviceKernels.cuh
+        GPU/GPUHelpers.cu
+        GPU/GPUHelpers.cuh
+        Point_Processing/AffineTransformation.cu
+        Point_Processing/AffineTransformation.cuh
         Core/FileFormats/bmpread.h
         Core/FileFormats/bmpread.c
-        Point_Processing/ImageSubtraction.cu
-        Point_Processing/ImageSubtraction.cuh
         main.cu)
 
 target_link_libraries(CS419

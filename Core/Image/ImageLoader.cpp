@@ -45,7 +45,7 @@ std::vector<Image> ImageLoader::loadMultipleImages(std::vector<std::string> imag
 #pragma omp parallel for num_threads(imagePaths.size()) schedule(dynamic, 1)
     for (int i = 0; i < imagePaths.size(); ++i)
     {
-        const Image& image = loadImage(imagePaths[i]);
+        Image image = std::move(loadImage(imagePaths[i]));
         #pragma omp critical
         {
             images.emplace_back(image);

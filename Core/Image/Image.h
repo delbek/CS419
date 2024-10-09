@@ -6,6 +6,7 @@
 #define CS419_IMAGE_H
 
 #include "Pixel.h"
+#include <cstdint>
 
 
 // row-major
@@ -26,9 +27,12 @@ public:
     __inline__ unsigned getWidth() const {return m_Width;}
     __inline__ unsigned gridSize() const {return m_Height * m_Width;}
     __inline__ unsigned getSize() const {return this->gridSize() * sizeof(Pixel);}
+    __inline__ Pixel* getImage() const {return m_Data;}
+
+    void applyPermutation(unsigned* permutation);
 
 private:
-    Pixel* m_Matrix;
+    Pixel* m_Data;
     unsigned m_Height;
     unsigned m_Width;
 };
